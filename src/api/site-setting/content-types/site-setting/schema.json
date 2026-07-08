@@ -4,7 +4,7 @@
   "info": {
     "singularName": "site-setting",
     "pluralName": "site-settings",
-    "displayName": "sitesetting"
+    "displayName": "site-setting"
   },
   "options": {
     "draftAndPublish": true
@@ -26,6 +26,9 @@
     },
     "footer": {
       "type": "blocks"
+    },
+    "subtitle": {
+      "type": "text"
     }
   }
 }

@@ -738,7 +738,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
 export interface ApiSiteSettingSiteSetting extends Struct.CollectionTypeSchema {
   collectionName: 'site_settings';
   info: {
-    displayName: 'sitesetting';
+    displayName: 'site-setting';
     pluralName: 'site-settings';
     singularName: 'site-setting';
   };
@@ -761,6 +761,7 @@ export interface ApiSiteSettingSiteSetting extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    subtitle: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
