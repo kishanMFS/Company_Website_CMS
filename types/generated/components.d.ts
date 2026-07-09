@@ -1,5 +1,29 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ComponentsServices extends Struct.ComponentSchema {
+  collectionName: 'components_components_services';
+  info: {
+    displayName: 'Services';
+  };
+  attributes: {
+    description: Schema.Attribute.RichText;
+    services: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface LayoutHeroSection extends Struct.ComponentSchema {
+  collectionName: 'components_layout_hero_sections';
+  info: {
+    displayName: 'Hero Section';
+  };
+  attributes: {
+    services: Schema.Attribute.Component<'components.services', true>;
+    subtitle: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -65,6 +89,8 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'components.services': ComponentsServices;
+      'layout.hero-section': LayoutHeroSection;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

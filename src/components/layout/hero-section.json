@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_layout_hero_sections",
+  "info": {
+    "displayName": "Hero Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "services": {
+      "type": "component",
+      "component": "components.services",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
