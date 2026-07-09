@@ -1,5 +1,17 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ComponentsLink extends Struct.ComponentSchema {
+  collectionName: 'components_components_links';
+  info: {
+    displayName: 'Link';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images'>;
+    title: Schema.Attribute.String;
+    url: Schema.Attribute.Text;
+  };
+}
+
 export interface ComponentsServices extends Struct.ComponentSchema {
   collectionName: 'components_components_services';
   info: {
@@ -9,6 +21,32 @@ export interface ComponentsServices extends Struct.ComponentSchema {
     description: Schema.Attribute.RichText;
     services: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
     title: Schema.Attribute.String;
+  };
+}
+
+export interface LayoutFooter extends Struct.ComponentSchema {
+  collectionName: 'components_layout_footers';
+  info: {
+    displayName: 'footer';
+  };
+  attributes: {
+    description: Schema.Attribute.RichText;
+    pages: Schema.Attribute.Component<'components.link', true>;
+    pagetitle: Schema.Attribute.String;
+    resources: Schema.Attribute.Component<'components.link', true>;
+    resourcestitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface LayoutHeader extends Struct.ComponentSchema {
+  collectionName: 'components_layout_headers';
+  info: {
+    displayName: 'header';
+  };
+  attributes: {
+    companyname: Schema.Attribute.Component<'components.link', false>;
+    navigations: Schema.Attribute.Component<'components.link', true>;
   };
 }
 
@@ -89,7 +127,10 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'components.link': ComponentsLink;
       'components.services': ComponentsServices;
+      'layout.footer': LayoutFooter;
+      'layout.header': LayoutHeader;
       'layout.hero-section': LayoutHeroSection;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;

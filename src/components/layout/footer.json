@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_layout_footers",
+  "info": {
+    "displayName": "footer"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "pagetitle": {
+      "type": "string"
+    },
+    "pages": {
+      "type": "component",
+      "component": "components.link",
+      "repeatable": true
+    },
+    "resourcestitle": {
+      "type": "string"
+    },
+    "resources": {
+      "type": "component",
+      "component": "components.link",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
