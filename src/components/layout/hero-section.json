@@ -15,6 +15,11 @@
       "type": "component",
       "component": "components.services",
       "repeatable": true
+    },
+    "blogpost": {
+      "type": "component",
+      "component": "components.blogpost",
+      "repeatable": true
     }
   },
   "config": {}

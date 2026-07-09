@@ -1,5 +1,20 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ComponentsBlogpost extends Struct.ComponentSchema {
+  collectionName: 'components_components_blogposts';
+  info: {
+    displayName: 'blogpost';
+  };
+  attributes: {
+    blog_posts: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::blog-post.blog-post'
+    >;
+    description: Schema.Attribute.RichText;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface ComponentsLink extends Struct.ComponentSchema {
   collectionName: 'components_components_links';
   info: {
@@ -56,6 +71,7 @@ export interface LayoutHeroSection extends Struct.ComponentSchema {
     displayName: 'Hero Section';
   };
   attributes: {
+    blogpost: Schema.Attribute.Component<'components.blogpost', true>;
     services: Schema.Attribute.Component<'components.services', true>;
     subtitle: Schema.Attribute.Text;
     title: Schema.Attribute.String;
@@ -127,6 +143,7 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'components.blogpost': ComponentsBlogpost;
       'components.link': ComponentsLink;
       'components.services': ComponentsServices;
       'layout.footer': LayoutFooter;

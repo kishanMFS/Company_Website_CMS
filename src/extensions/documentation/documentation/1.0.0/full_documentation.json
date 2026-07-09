@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2026-07-09T06:26:41.108Z"
+    "x-generation-date": "2026-07-09T10:59:00.870Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -11459,7 +11459,7 @@
                 "type": "string",
                 "format": "date"
               },
-              "content": {},
+              "description": {},
               "image": {
                 "oneOf": [
                   {
@@ -11556,7 +11556,7 @@
             "type": "string",
             "format": "date"
           },
-          "content": {},
+          "description": {},
           "image": {
             "type": "object",
             "properties": {
@@ -12753,7 +12753,7 @@
                   "type": "string",
                   "format": "date"
                 },
-                "content": {},
+                "description": {},
                 "image": {
                   "type": "object",
                   "properties": {
@@ -18133,6 +18133,48 @@
           }
         }
       },
+      "ComponentsBlogpostComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "blog_posts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ]
+                },
+                "documentId": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
       "LayoutHeroSectionComponent": {
         "type": "object",
         "properties": {
@@ -18162,6 +18204,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ComponentsServicesComponent"
+            }
+          },
+          "blogpost": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ComponentsBlogpostComponent"
             }
           }
         }
