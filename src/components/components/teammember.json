@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_components_teammembers",
+  "info": {
+    "displayName": "teammember"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "team_members": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::team-member.team-member"
+    }
+  },
+  "config": {}
+}

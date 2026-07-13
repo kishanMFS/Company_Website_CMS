@@ -27,6 +27,17 @@ export interface ComponentsLink extends Struct.ComponentSchema {
   };
 }
 
+export interface ComponentsMission extends Struct.ComponentSchema {
+  collectionName: 'components_components_missions';
+  info: {
+    displayName: 'mission';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface ComponentsServices extends Struct.ComponentSchema {
   collectionName: 'components_components_services';
   info: {
@@ -35,6 +46,32 @@ export interface ComponentsServices extends Struct.ComponentSchema {
   attributes: {
     description: Schema.Attribute.RichText;
     services: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface ComponentsTeammember extends Struct.ComponentSchema {
+  collectionName: 'components_components_teammembers';
+  info: {
+    displayName: 'teammember';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    team_members: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::team-member.team-member'
+    >;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface ComponentsVision extends Struct.ComponentSchema {
+  collectionName: 'components_components_visions';
+  info: {
+    displayName: 'vision';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
     title: Schema.Attribute.String;
   };
 }
@@ -145,7 +182,10 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'components.blogpost': ComponentsBlogpost;
       'components.link': ComponentsLink;
+      'components.mission': ComponentsMission;
       'components.services': ComponentsServices;
+      'components.teammember': ComponentsTeammember;
+      'components.vision': ComponentsVision;
       'layout.footer': LayoutFooter;
       'layout.header': LayoutHeader;
       'layout.hero-section': LayoutHeroSection;
