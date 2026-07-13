@@ -1,5 +1,120 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ComponentsBlogpost extends Struct.ComponentSchema {
+  collectionName: 'components_components_blogposts';
+  info: {
+    displayName: 'blogpost';
+  };
+  attributes: {
+    blog_posts: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::blog-post.blog-post'
+    >;
+    description: Schema.Attribute.RichText;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface ComponentsLink extends Struct.ComponentSchema {
+  collectionName: 'components_components_links';
+  info: {
+    displayName: 'Link';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images'>;
+    title: Schema.Attribute.String;
+    url: Schema.Attribute.Text;
+  };
+}
+
+export interface ComponentsMission extends Struct.ComponentSchema {
+  collectionName: 'components_components_missions';
+  info: {
+    displayName: 'mission';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface ComponentsServices extends Struct.ComponentSchema {
+  collectionName: 'components_components_services';
+  info: {
+    displayName: 'Services';
+  };
+  attributes: {
+    description: Schema.Attribute.RichText;
+    services: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface ComponentsTeammember extends Struct.ComponentSchema {
+  collectionName: 'components_components_teammembers';
+  info: {
+    displayName: 'teammember';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    team_members: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::team-member.team-member'
+    >;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface ComponentsVision extends Struct.ComponentSchema {
+  collectionName: 'components_components_visions';
+  info: {
+    displayName: 'vision';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface LayoutFooter extends Struct.ComponentSchema {
+  collectionName: 'components_layout_footers';
+  info: {
+    displayName: 'footer';
+  };
+  attributes: {
+    description: Schema.Attribute.RichText;
+    pages: Schema.Attribute.Component<'components.link', true>;
+    pagetitle: Schema.Attribute.String;
+    resources: Schema.Attribute.Component<'components.link', true>;
+    resourcestitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface LayoutHeader extends Struct.ComponentSchema {
+  collectionName: 'components_layout_headers';
+  info: {
+    displayName: 'header';
+  };
+  attributes: {
+    companyname: Schema.Attribute.Component<'components.link', false>;
+    navigations: Schema.Attribute.Component<'components.link', true>;
+  };
+}
+
+export interface LayoutHeroSection extends Struct.ComponentSchema {
+  collectionName: 'components_layout_hero_sections';
+  info: {
+    displayName: 'Hero Section';
+  };
+  attributes: {
+    blogpost: Schema.Attribute.Component<'components.blogpost', true>;
+    services: Schema.Attribute.Component<'components.services', true>;
+    subtitle: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -65,6 +180,15 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'components.blogpost': ComponentsBlogpost;
+      'components.link': ComponentsLink;
+      'components.mission': ComponentsMission;
+      'components.services': ComponentsServices;
+      'components.teammember': ComponentsTeammember;
+      'components.vision': ComponentsVision;
+      'layout.footer': LayoutFooter;
+      'layout.header': LayoutHeader;
+      'layout.hero-section': LayoutHeroSection;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

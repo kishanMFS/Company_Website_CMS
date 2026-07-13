@@ -15,9 +15,24 @@
     "title": {
       "type": "string"
     },
-    "blocks": {
+    "description": {
+      "type": "text"
+    },
+    "mission": {
       "type": "dynamiczone",
-      "components": ["shared.media", "shared.quote", "shared.rich-text", "shared.slider"]
+      "components": [
+        "components.mission"
+      ]
+    },
+    "vision": {
+      "type": "component",
+      "component": "components.vision",
+      "repeatable": false
+    },
+    "teammember": {
+      "type": "component",
+      "component": "components.teammember",
+      "repeatable": false
     }
   }
 }
